@@ -83,7 +83,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define ADXL362_2G_THRESHOLD_LSBPERG 1000
 #define ADXL362_4G_THRESHOLD_LSBPERG 500
 //datasheet freefall example uses scale factor 250, while in the specifications it says 235!
-//THRESH_INACT = Threshold Value [g] × Scale Factor [LSB per g]
+//THRESH_INACT = Threshold Value [g] ï¿½ Scale Factor [LSB per g]
 //page 27:
 //THRESH_INACT [g] ... =  Threshold Value [g] = THRESH_INACT [codes]/Sensitivity [codes per g]
 //sensitive is actually 4, so the specifications dont match!!
@@ -117,9 +117,9 @@ typedef enum
 
 /* Datasheet (wakeup mode):
  * Switch into full bandwidth measurement mode
-• Signal an interrupt to a microcontroller
-• Wake up downstream circuitry, depending on the configuration
-• In wake-up mode, all accelerometer features are available with the exception of the activity timer.
+ï¿½ Signal an interrupt to a microcontroller
+ï¿½ Wake up downstream circuitry, depending on the configuration
+ï¿½ In wake-up mode, all accelerometer features are available with the exception of the activity timer.
 All registers can be accessed, and real-time data can be read and/or stored in the FIFO.
  */
 //Bandwidth is the bandwidth of the analog digital converter, the higher the less aliasing (more data points) / the more accuracy
@@ -391,8 +391,8 @@ private:
     short setReg16(byte reg, uint16_t val);
     short setReg(byte reg, uint16_t val, bool twoBytes = false);
 
-    void spiBeginTransaction();
-    void spiEndTransaction();
+    virtual void spiBeginTransaction();
+    virtual void spiEndTransaction();
 
 private:
     bool _powerModeInProgress = false;
